@@ -1,0 +1,51 @@
+---
+title: "Bioinformatics First Year Exam"
+author: "Crisandra Jade Diaz, A59002951"
+date: "7/17/2022"
+output:
+  pdf_document: default
+  html_document: default
+---
+##Load packages into library
+```{r}
+library(dplyr)
+library(lubridate)
+library(ggplot2)
+library(tibble)
+
+```
+
+## Data taken from https://data.chhs.ca.gov/dataset/covid-19-variant-data
+##Reading CSV file and naming it as "covid.data"
+```{r}
+covid.data <- read.csv("covid19_variants.csv")
+```
+
+
+##Loading data from .csv file into ggplot to create a line graph
+```{r}
+##Taking data from covid.data and used the following the format for a line graph to plot the data with and x & y axis along with a legend naming each variant
+ggplot(data = covid.data, aes(x=date, y=percentage, group=variant_name, color=variant_name) )+ 
+  ##insert line graph
+  geom_line() +
+  ## Label x-axis
+  xlab("Date Range: 01/01/2021-06/25/2022") +
+  ##Label y-axis
+  ylab("Percentage of Sequenced Specimens") +
+  ##Label Legend Title
+  labs(colour= "Variant Name") +
+  ##Label graph title
+  ggtitle("Covid 19 Variants in California, USA") 
+  
+```
+
+
+
+
+
+
+
+
+
+
+
